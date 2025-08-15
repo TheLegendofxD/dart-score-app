@@ -81,6 +81,7 @@ let errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {});
 let winModal = new bootstrap.Modal(document.getElementById('winModal'), {});
 let askNumberModal = new bootstrap.Modal(document.getElementById('askNumberModal'), {});
 let continueModal = new bootstrap.Modal(document.getElementById('continueModal'), {});
+let ruleModal = new bootstrap.Modal(document.getElementById('ruleModal'), {});
 let askNumberModalPlayerIndex = 0;
 let askNumberModalScoreIndex = 0;
 
@@ -289,6 +290,7 @@ document.getElementById('start_btn').addEventListener('click', start_game);
 view_type.addEventListener('change', render_table);
 sort_type.addEventListener('change', render_table);
 document.getElementById('continueOkBtn').addEventListener('click', load_game);
+document.getElementById('rule_btn').addEventListener('click', function () {current_modal='rules';ruleModal.show();})
 
 add_player();
 set_target_score();
