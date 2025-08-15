@@ -57,7 +57,7 @@
     <section id="sect_main" style="display: none;">
         <div class="row mb-3">
             <div class="col">
-                <button class="btn btn-danger form-control">Spiel beenden</button>
+                <button class="btn btn-danger form-control" id="finish_btn">Spiel beenden</button>
             </div>
             <div class="col">
                 <button class="btn btn-secondary form-control" id="rule_btn">Regeln</button>
@@ -149,15 +149,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="finishGameModalLabel">🎯 Runde beenden</h1>
+                    <h1 class="modal-title fs-5" id="finishGameModalLabel">🎯 Spiel beenden</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Möchtest du diese Runde beenden?
+                    Möchtest du dieses Spiel beenden?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="finishGameOkBtn">Runde beenden</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="finishGameOkBtn">Spiel beenden</button>
                 </div>
             </div>
         </div>
