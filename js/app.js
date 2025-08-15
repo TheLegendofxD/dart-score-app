@@ -98,7 +98,7 @@ function show_asknumber(player_index, score_index = -1) {
     askNumberModalScoreIndex = score_index;
     document.getElementById('askNumberPlayerName').innerText = players[player_index].name;
     if (score_index == -1) {
-        document.getElementById('askNumberInput').value = '0';
+        document.getElementById('askNumberInput').value = '';
         document.getElementById('askNumberRound').innerText = 'letzten';
     } else {
         document.getElementById('askNumberInput').value = players[player_index].score_table[score_index].difference;
@@ -109,8 +109,7 @@ function show_asknumber(player_index, score_index = -1) {
 document.getElementById('askNumberOkBtn').addEventListener('click', function() {
     let result = document.getElementById('askNumberInput').value;
     if (result == '') {
-        show_error('Es muss eine Zahl eingegeben werden :(');
-        return;
+        result = 0;
     }
     if (askNumberModalScoreIndex == -1) {
         players[askNumberModalPlayerIndex].add_score(parseInt(result));
