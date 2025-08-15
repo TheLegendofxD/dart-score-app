@@ -31,7 +31,14 @@
             <label for="player_names" class="form-label">Spieler (<span id="player_count">0</span>)</label>
             <div class="players" name="player_names" id="player_names"></div>
         </div>
-        <button class="btn btn-success form-control" id="add_player_btn">+ Spieler hinzufügen</button>
+        <button class="btn btn-success form-control mb-3" id="add_player_btn">+ Spieler hinzufügen</button>
+        <label for="player_order" class="form-label">Spielerreihenfolge:</label>
+        <div class="mb-3">
+            <select name="player_order" id="player_order" class="form-select">
+                <option value="unchanged">Wie eintragen</option>
+                <option value="random">Zufällig</option>
+            </select>
+        </div>
         <label for="target_score" class="form-label">Spielvariante:</label>
         <div class="row mb-3">
             <div class="col">
@@ -131,6 +138,23 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="finishGameModal" tabindex="-1" aria-labelledby="finishGameModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="finishGameModalLabel">🎯 Runde beenden</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Möchtest du diese Runde beenden?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="finishGameOkBtn">Runde beenden</button>
                 </div>
             </div>
         </div>

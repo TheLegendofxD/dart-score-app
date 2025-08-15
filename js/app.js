@@ -64,6 +64,14 @@ class Player {
     }
 }
 
+function shuffle_array(unshuffled_array) {
+    /* https://stackoverflow.com/a/46545530 */
+    return unshuffled_array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+
 const target_score_elem = document.getElementById("target_score");
 const game_table_body = document.getElementById("game_table_body");
 const sort_type = document.getElementById('sort_type');
@@ -254,6 +262,11 @@ function start_game() {
         players.push(new Player(pn.value, game_target_score));
     });
     if (players.length < 2) { return };
+
+    if (document.getElementById('player_order').value == 'random') {
+        players = shuffle_array(players);
+    }
+
     prepare_table();
     render_table();
     save_game();
