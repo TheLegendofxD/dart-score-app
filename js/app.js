@@ -76,6 +76,7 @@ const target_score_elem = document.getElementById("target_score");
 const game_table_body = document.getElementById("game_table_body");
 const sort_type = document.getElementById('sort_type');
 const view_type = document.getElementById('view_type');
+let current_modal = 'none';
 let errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {});
 let winModal = new bootstrap.Modal(document.getElementById('winModal'), {});
 let askNumberModal = new bootstrap.Modal(document.getElementById('askNumberModal'), {});
@@ -83,17 +84,26 @@ let continueModal = new bootstrap.Modal(document.getElementById('continueModal')
 let askNumberModalPlayerIndex = 0;
 let askNumberModalScoreIndex = 0;
 
+document.addEventListener('shown.bs.modal', function() {
+    if (current_modal == 'ask_number') {
+        document.getElementById('askNumberInput').focus();
+    }
+})
+
 function show_error(text) {
+    current_modal = 'error';
     document.getElementById('errorModalBody').innerText = text;
     errorModal.show();
 }
 
 function show_win(player_name) {
+    current_modal = 'win';
     document.getElementById('winPlayerName').innerText = player_name;
     winModal.show();
 }
 
 function show_asknumber(player_index, score_index = -1) {
+    current_modal = 'ask_number';
     askNumberModalPlayerIndex = player_index;
     askNumberModalScoreIndex = score_index;
     document.getElementById('askNumberPlayerName').innerText = players[player_index].name;
@@ -106,6 +116,7 @@ function show_asknumber(player_index, score_index = -1) {
     }
     askNumberModal.show();
 }
+
 document.getElementById('askNumberOkBtn').addEventListener('click', function() {
     let result = document.getElementById('askNumberInput').value;
     if (result == '') {
@@ -143,6 +154,7 @@ function add_player() {
     `, "text/html");
     document.getElementById('player_names').appendChild(doc.firstChild);
     document.getElementById('player_count').innerText = player_count;
+    document.getElementById(`pn_name${current_player_id}`).focus();
     current_player_id += 1;
 }
 
@@ -282,5 +294,6 @@ add_player();
 set_target_score();
 
 if (!(localStorage.getItem('dart_game') == null || localStorage.getItem('dart_game') == '')) {
+    current_modal = 'continue';
     continueModal.show();
 }
